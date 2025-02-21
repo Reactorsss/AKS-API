@@ -509,5 +509,33 @@ module.exports = {
             return callBack(null, result)
         })
     },
+
+    serv_customers_sessions_read_by_mobile_no : (data ,callBack) => {
+        sql.query('call customers_sessions_read_by_mobile_no(?)', 
+        [
+           data.p_mobile_no
+        ],
+        (error, result) => {
+           console.log(result)
+            if(error){
+                return callBack(error)
+            }
+            return callBack(null, result)
+        })
+    },
+
+    serv_customers_sessions_read_scan : (data ,callBack) => {
+        sql.query('call customers_sessions_read_scan(?)', 
+        [
+           data.p_session_token
+        ],
+        (error, result) => {
+           console.log(result)
+            if(error){
+                return callBack(error)
+            }
+            return callBack(null, result)
+        })
+    },
 }
 

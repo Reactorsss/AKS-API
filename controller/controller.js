@@ -28,7 +28,9 @@ const {
     serv_customers_read_dashboard_search_1_indirect,
     serv_customers_read_dashboard_2_v2,
     serv_events_logs,
-    serv_customers_read_dashboard_4_1
+    serv_customers_read_dashboard_4_1,
+    serv_customers_sessions_read_by_mobile_no,
+    serv_customers_sessions_read_scan
     
     
     } = require('../services/services');
@@ -877,6 +879,60 @@ const {
         if (x_a_s == value){
             serv_customers_read_dashboard_4_1(data , (error, result) => {
                 // console.log(result)
+                if (error){
+                    return res.status(500).json({
+                        success: 0,
+                        message: error
+                    })
+                }
+            return res.status(200).json({
+                success: 1,
+                message: 'success',
+                data : result[0]
+                })
+            })
+        } else {
+            res.status(401).json({
+                "responseCode" : 401,
+                "responseStatus" : "Authentication Failes"
+            });
+            return;
+        }},
+
+
+    
+    cont_customers_sessions_read_by_mobile_no : (req, res) => {
+        const data = req.query
+        const value = "528LCQW2IF6W0QcFk6Ip";
+        var x_a_s = req.header('x-auth');
+        if (x_a_s == value){
+            serv_customers_sessions_read_by_mobile_no(data , (error, result) => {
+                if (error){
+                    return res.status(500).json({
+                        success: 0,
+                        message: error
+                    })
+                }
+            return res.status(200).json({
+                success: 1,
+                message: 'success',
+                data : result[0]
+                })
+            })
+        } else {
+            res.status(401).json({
+                "responseCode" : 401,
+                "responseStatus" : "Authentication Failes"
+            });
+            return;
+        }},
+
+    cont_customers_sessions_read_scan : (req, res) => {
+        const data = req.query
+        const value = "528LCQW2IF6W0QcFk6Ip";
+        var x_a_s = req.header('x-auth');
+        if (x_a_s == value){
+            serv_customers_sessions_read_scan(data , (error, result) => {
                 if (error){
                     return res.status(500).json({
                         success: 0,

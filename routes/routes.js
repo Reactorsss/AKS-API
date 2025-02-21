@@ -28,7 +28,9 @@ const {
     cont_customers_read_dashboard_search_1_indirect,
     cont_customers_read_dashboard_2_v2,
     cont_events_logs,
-    cont_customers_read_dashboard_4_1
+    cont_customers_read_dashboard_4_1,
+    cont_customers_sessions_read_by_mobile_no,
+    cont_customers_sessions_read_scan
 
 } = require('../controller/controller')
 const router = require('express').Router()
@@ -57,6 +59,8 @@ router.get('/customer/read/customer/by/session', cont_customer_sel_login_session
 router.get('/customer/read/otp/history', cont_customer_otp_history_read)
 router.get('/customer/read/user/level', cont_user_levels_read)
 router.get('/customer/read/user/admins', cont_users_read)
+router.get('/customer/read/session/by/mobile/no', cont_customers_sessions_read_by_mobile_no)
+router.get('/customer/read/session/by/scan', cont_customers_sessions_read_scan)
 router.get('/customer/photo/read', cont_customers_photo_read)
 router.get('/user/read/admins/by/session', cont_admin_user_sel_login_session)
 router.get('/customer/read/by/id/no', cont_customer_sel_by_id_no)
